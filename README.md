@@ -57,4 +57,9 @@ Ecto.Query.from(p in Friends.Person, where: p.last_name == "Smith") |> Friends.R
 last_name = "Smith"
 Friends.Person |> Ecto.Query.where(last_name: ^last_name) |> Friends.Repo.all
 Ecto.Query.from(p in Friends.Person, where: p.last_name == ^last_name) |> Friends.Repo.all
+
+# Composing queries
+query = Friends.Person |> Ecto.Query.where(last_name: "Smith")
+query = query |> Ecto.Query.where(first_name: "Jane")
+query |> Friends.Repo.all
 ```
