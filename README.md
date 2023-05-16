@@ -7,4 +7,5 @@ Following along with the [Ecto Getting Started guide](https://hexdocs.pm/ecto/ge
 ```
 mix deps.get
 mix ecto.create
+mix ecto.migrate
 ```
