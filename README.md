@@ -33,4 +33,8 @@ people = [
   %Friends.Person{first_name: "Jane", last_name: "Smith", age: 26},
 ]
 Enum.each(people, fn (person) -> Friends.Repo.insert(person) end)
+
+# Fetching a single record
+Friends.Person |> Ecto.Query.first |> Friends.Repo.one
+Friends.Person |> Ecto.Query.last |> Friends.Repo.one
 ```
