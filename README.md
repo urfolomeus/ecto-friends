@@ -15,5 +15,6 @@ mix ecto.migrate
 ```elixir
 # insert a record
 person = %Friends.Person{}
+changeset = Friends.Repo.changeset(person, %{first_name: "Alan", last_name: "Gardner"})
 Friends.Repo.insert(person)
 ```
