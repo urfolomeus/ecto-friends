@@ -38,6 +38,12 @@ Enum.each(people, fn (person) -> Friends.Repo.insert(person) end)
 Friends.Person |> Ecto.Query.first |> Friends.Repo.one
 Friends.Person |> Ecto.Query.last |> Friends.Repo.one
 
+# Fetching a single record by ID
+Friends.Person |> Friends.Repo.get(1)
+
+# Fetching a single record by a given field
+Friends.Person |> Friends.Repo.get_by(first_name: "Ryan")
+
 # Fetching multiple records
 Friends.Person |> Friends.Repo.all
 ```
