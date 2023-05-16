@@ -67,4 +67,8 @@ query |> Friends.Repo.all
 person = Friends.Person |> Ecto.Query.first |> Friends.Repo.one
 changeset = Friends.Person.changeset(person, %{age: 29})
 Friends.Repo.update(changeset)
+
+# Deleting a record
+person = Friends.Repo.get(Friends.Person, 1)
+Friends.Repo.delete(person)
 ```
