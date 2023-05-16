@@ -62,4 +62,9 @@ Ecto.Query.from(p in Friends.Person, where: p.last_name == ^last_name) |> Friend
 query = Friends.Person |> Ecto.Query.where(last_name: "Smith")
 query = query |> Ecto.Query.where(first_name: "Jane")
 query |> Friends.Repo.all
+
+# Updating a record
+person = Friends.Person |> Ecto.Query.first |> Friends.Repo.one
+changeset = Friends.Person.changeset(person, %{age: 29})
+Friends.Repo.update(changeset)
 ```
