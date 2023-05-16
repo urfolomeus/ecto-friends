@@ -46,4 +46,15 @@ Friends.Person |> Friends.Repo.get_by(first_name: "Ryan")
 
 # Fetching multiple records
 Friends.Person |> Friends.Repo.all
+
+# Filtering results
+Friends.Person |> Ecto.Query.where(last_name: "Smith") |> Friends.Repo.all
+# or...
+Ecto.Query.from(p in Friends.Person, where: p.last_name == "Smith") |> Friends.Repo.all
+
+# When using variables they must be pinned
+# This triggers the use of pararmeterized SQL queries to protect against SQL Injection attacks
+last_name = "Smith"
+Friends.Person |> Ecto.Query.where(last_name: ^last_name) |> Friends.Repo.all
+Ecto.Query.from(p in Friends.Person, where: p.last_name == ^last_name) |> Friends.Repo.all
 ```
